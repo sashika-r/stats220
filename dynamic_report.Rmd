@@ -1,0 +1,73 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+h1 {
+  background-color: #f7fbfd;
+  color: #9866C7;
+  font-weight: bold;
+  border-style: dotted;
+  border-width: 4px;
+}
+
+h2 {
+  color: #BF92E4;
+  font-weight: medium;
+  border-style: dotted;
+  border-width: 3px;
+}
+
+body {
+  font-family: Helvetica;
+}
+
+```
+
+## Tracking My Music Usage 
+
+I created a form to observe and analyse my music listening habits over a period of 5 days. I gathered data on the time I listened to music, the activity I was doing and the duration. 
+
+```{r}
+library(tidyverse)
+
+# URL for the Google sheet published as a CSV
+csv_file <- "/Users/sashika/Documents/STATS 220/stats220/Project2/Music_Logging_Responses.csv"
+
+# Using the read_csv() function to read the data
+# into a data frame named logged_data
+logged_data <- read_csv(csv_file)
+
+# printing out the latest_data data frame
+latest_data <- logged_data %>%
+  rename(time = 3,
+         activity = 4, 
+         music_duration = 5)
+
+sum(latest_data$music_duration/60) #number of hours 
+max(latest_data$music_duration) #max time listened 
+min(latest_data$music_duration) #min time listened 
+
+# bar plot with the activities 
+ggplot(data = latest_data) +
+  geom_bar(aes(x = activity),fill = "#9866C7")+
+  labs(title = "Activities While Listening to Music",
+       caption = "Source: Music Form by Sashika Ragavan",
+       x = "Activities",
+       y = "Count")
+
+# bar plot with the duration of music  
+ggplot(data = latest_data) +
+  geom_bar(aes(x = music_duration),fill = "#BF92E4")+
+  labs(title = "Duration of Music Listening Sessions",
+       caption = "Source: Music Form by Sashika Ragavan",
+       x = "Duration in Minutes",
+       y = "Count ")
+
+```
