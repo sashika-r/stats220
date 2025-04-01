@@ -38,7 +38,7 @@ I created a form to observe and analyse my music listening habits over a period 
 library(tidyverse)
 
 # URL for the Google sheet published as a CSV
-csv_file <- "/Users/sashika/Documents/STATS 220/stats220/Project2/Music_Logging_Responses.csv"
+csv_file <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSYKmCQXFj1VIlgXYgsuxby31AgK91k2jIbN0-D0n8xCuFq4-3Lxq9VzR3ZmeBx35Sge9D0xaJJ-pEo/pub?output=csv"
 
 # Using the read_csv() function to read the data
 # into a data frame named logged_data
