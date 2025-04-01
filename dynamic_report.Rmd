@@ -32,24 +32,6 @@ body {
 
 ## Tracking My Music Usage 
 
-I created a form to observe and analyse my music listening habits over a period of 5 days. I gathered data on the time I listened to music, the activity I was doing and the duration. 
-
-The total number of the hours I listened to music in hours is: 
-```{r}
-sum(latest_data$music_duration/60) #number of hours 
-```
-
-The maximum number of the hours I listened to music in hours is: 
-```{r}
-max(latest_data$music_duration) #max time listened 
-```
-
-The minimum number of the hours I listened to music in hours is: 
-```{r}
-min(latest_data$music_duration) #min time listened 
-```
-
-
 ```{r}
 library(tidyverse)
 
@@ -83,3 +65,20 @@ ggplot(data = latest_data) +
        y = "Count ")
 
 ```
+
+I created a form to observe and analyse my music listening habits over a period of 5 days. I gathered data on the time I listened to music, the activity I was doing and the duration. 
+
+```{r}
+total_hours <- sum(latest_data$music_duration/60) #number of hours 
+```
+The total number of hours I listened to music is `r total_hours`
+
+```{r}
+maximum_min <- max(latest_data$music_duration) #max time listened 
+```
+The maximum number of minutes I listened to music is `r maximum_min`
+
+```{r}
+minimum_min <- min(latest_data$music_duration) #min time listened 
+```
+The minimum number of minutes I listened to music is `r minimum_min`
