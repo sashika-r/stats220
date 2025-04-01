@@ -34,11 +34,27 @@ body {
 
 I created a form to observe and analyse my music listening habits over a period of 5 days. I gathered data on the time I listened to music, the activity I was doing and the duration. 
 
+The total number of the hours I listened to music in hours is: 
+```{r}
+sum(latest_data$music_duration/60) #number of hours 
+```
+
+The maximum number of the hours I listened to music in hours is: 
+```{r}
+max(latest_data$music_duration) #max time listened 
+```
+
+The minimum number of the hours I listened to music in hours is: 
+```{r}
+min(latest_data$music_duration) #min time listened 
+```
+
+
 ```{r}
 library(tidyverse)
 
 # URL for the Google sheet published as a CSV
-csv_file <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSYKmCQXFj1VIlgXYgsuxby31AgK91k2jIbN0-D0n8xCuFq4-3Lxq9VzR3ZmeBx35Sge9D0xaJJ-pEo/pub?output=csv"
+csv_file <- "/Users/sashika/Documents/STATS 220/stats220/Project2/Music_Logging_Responses.csv"
 
 # Using the read_csv() function to read the data
 # into a data frame named logged_data
@@ -49,10 +65,6 @@ latest_data <- logged_data %>%
   rename(time = 3,
          activity = 4, 
          music_duration = 5)
-
-sum(latest_data$music_duration/60) #number of hours 
-max(latest_data$music_duration) #max time listened 
-min(latest_data$music_duration) #min time listened 
 
 # bar plot with the activities 
 ggplot(data = latest_data) +
