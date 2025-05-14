@@ -1,0 +1,87 @@
+---
+title: My Music Listening Patterns
+output: html_document
+---
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+```
+
+```{js}
+$(function() {
+  $(".level2").css('visibility', 'hidden');
+  $(".level2").first().css('visibility', 'visible');
+  $(".container-fluid").height($(".container-fluid").height() + 300);
+  $(window).on('scroll', function() {
+    $('h2').each(function() {
+      var h2Top = $(this).offset().top - $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (h2Top >= 0 && h2Top <= windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'visible');
+      } else if (h2Top > windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'hidden');
+      }
+    });
+  });
+})
+```
+
+```{css}
+.figcaption {display: none}
+h1 {
+  color: #219ebc;
+  font-weight: bold;
+  font-family: Times;
+  border-style: solid;
+  border-width: 4px;
+  text-align: center;
+
+}
+
+h2 {
+  color: #2a9d8f;
+  font-family: Times;
+}
+
+body {
+  font-family: Helvetica;
+}
+
+img {
+  border: 5px solid #e9c46a;
+}
+```
+
+## Purpose
+I created a form to observe and analyse my music listening habits over two different time periods. I gathered data on the time I listened to music, the activity I was doing and the duration. I wanted to observe patterns about what activities I commonly do while listening to music and the time I spend listening. As I enjoy listening to music when doing most activities. 
+
+![Music Listening Meme](meme_plot.png)
+
+## What is my average time of listening to music by activity? 
+![Average Music Time by Activity Plot](plot1.png)
+From the bar chart, I can see that the longest time I spent listening to music in one session was when I studied. The average duration was 68.1 minutes; this value makes sense as I tend to study in long periods of time when I am focused. 
+
+The average duration for commuting, chores, and just listening are all around 25 minutes. This is interesting as I thought that commuting would have a higher time average as I spend lots of time commuting around places driving or on the bus.
+
+The smallest duration I listened to music was for my morning/evening routine at 20 minutes. This could be due to I try to be quick with my routine to either get out the road or go to sleep. 
+
+## What were my listening patterns over time? 
+![Listening Patterns Over Time Plot](plot2.png)
+
+To observe my music habits I create a scatter chart. The data is sectioned into 2 main time periods as this was when I collected data for the project 3 and 4. In the first round of data collection, I listened to the maximum duration (130 minutes) much higher than the maximum in the second round (82 minutes). 
+
+Overall, I had less times I listened to music in the second round. This could be because I was very busy during that week and did not listen to as much music. 
+
+## When did I do each activity while listening to music?
+![Time of Each Activity Plot1](plot3.png)
+The heat map plot shows that most of the time I listened to music and did the activity at different times in the day as there are more with the count of 1 (blue squares). However, there are a few activities that I tend to do at the same time.
+
+I tend to study throughout the day as there are squares filled across the hours of the day. There is a cluster of consecutive hours that I do my morning routine and listen to music as I try to start the day at similair times to have a routine. 
+
+Exercising has the highest count with 4 at hour 21 which is 9pm. I did not realise that this is the time I tend to go for walks the most which is an interesting observation. 
+
+
+
+
